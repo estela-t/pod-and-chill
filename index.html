@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>✌🏽Pod & Chill</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
+	  integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
+	  crossorigin=""/>
+	  <link href="https://fonts.googleapis.com/css?family=Rubik|Work+Sans" rel="stylesheet">
+	  	<link rel="stylesheet" href="styles/styles.css">
+
+	
+</head>
+
+
+<body>
+	<header>
+		<div>
+			<h1>POD & CHILL</h1>
+		</div>
+		<p>(an app for unemployed web developers June-Sept)</p>
+	</header>
+	
+	<section class="genreSelection">
+		<div class="wrapper">
+			<h2>Current podcast mood:</h2>
+			<ul>
+				<li class="genreSelection_item">
+					<div class="iconContainer">
+						<img src="assets/society.svg" alt="icon of three faces">
+					</div>
+					<p data-id="1324">Society and Culture</p>
+				</li>
+				<li class="genreSelection_item">
+					<div class="iconContainer">
+						<img src="assets/news.svg" alt="icon of the globe">
+					</div>
+					<p data-id="1311">News and Politics</p>
+				</li>
+				<li class="genreSelection_item">
+					<div class="iconContainer">
+						<img src="assets/science.svg" alt="icon of an aton">
+					</div>
+					<p data-id="1315">Science and Medicine</p>
+				</li>
+				<!-- <li class="genreSelection_item">
+					<div class="iconContainer">
+						<img src="assets/music.svg" alt="icon of musical note">
+					</div>
+					<p data-id="1310">Music</p>
+				</li> -->
+				<li class="genreSelection_item">
+					<div class="iconContainer">
+						<img src="assets/tech.svg" alt="icon of an embed">
+					</div>
+					<p data-id="1318">Technology</p>
+				</li>
+				<!-- <li class="genreSelection_item">
+					<div class="iconContainer">
+						<img src="assets/tv.svg" alt="icon of a tv">
+					</div>
+					<p data-id="1309">TV & Film</p>
+				</li> -->
+				<li class="genreSelection_item">
+					<div class="iconContainer">
+						<img src="assets/comedy.svg" alt="icon of a laughing face">
+					</div>
+					<p data-id="1303">Comedy</p>
+				</li>
+				<li class="genreSelection_item">
+					<div class="iconContainer">
+						<img src="" alt="">
+					</div>
+					<p data-id="1316">True Crime</p>
+				</li>
+				<!-- <li class="genreSelection_item">
+					<div class="iconContainer">
+						<img src="assets/die.svg" alt="icon of game die">
+					</div>
+					<p data-id="1323">Games & Hobbies</p>
+				</li> -->
+				<li class="genreSelection_item">
+					<div class="iconContainer">
+						<img src="assets/art.svg" alt="">
+					</div>
+					<p data-id="">Arts</p>
+				</li>
+			</ul>
+		</div>
+	</section>
+	<section class="locationSelection">
+		<div class="wrapper">
+			<button class="locator">Get my location</button>
+			<div class="spinnerContainer">
+				<img src="assets/ring-alt.svg" alt="ripple icon" class="loadIcon">
+			</div>
+		</div>
+	</section>
+
+	<section class="results">
+		<div id="podSuggest"></div>
+		<div id="mapid"></div>
+	</section>
+
+	<footer>
+		<p>designed & built by Estela T. (& Helpcue💞)</p>
+	</footer>
+
+
+
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
+	  integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
+	  crossorigin=""></script>
+	<!--   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDREesQzQn5zk7SCQIRvnJnMfx0Xci2ayE&libraries=places"></script> -->
+	  <script src="script.js"></script>
+	
+</body>
+</html>
+
+
