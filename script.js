@@ -4,6 +4,8 @@
 const podApp = {}
 const googleKey = "AIzaSyDREesQzQn5zk7SCQIRvnJnMfx0Xci2ayE";
 podApp.parksArray = [];
+podApp.topPodArray = [];
+
 
 // User chooses a genre 
 podApp.events = function () {
@@ -99,59 +101,37 @@ podApp.getPodcasts = (podChoice) => {
 			//Here is all data 
 			//We want to filter based on what the user selected and only show that genre
 			podData = podData.map(function(singlePod){
-				console.log(singlePod);
 				singlePod.Genre = singlePod.Genre.split(',');
+				console.log(singlePod.Genre);
 				return singlePod;
 			});
 			podApp.filterPodcasts(podData, podChoice)
 		});
 	}
-	// Filter returned podcast data so that only podcasts that include the chosen genre appear
-	podApp.filterPodcasts = function(podList, podChoice) {
-		const filteredPodList = podList.filter(function(singlePod){
-			return singlePod.Genre.includes(podChoice);
-			// podApp.getPodcasts(genreList);
-		}); 
-		console.log("hey :", filteredPodList);
+// Filter returned podcast data so that only podcasts that include the chosen genre appear
+podApp.filterPodcasts = function(podList, podChoice) {
+	const filteredPodList = podList.filter(function(singlePod){
+		return singlePod.Genre.includes(podChoice);
+	}); 
+	// console.log("hey :", filteredPodList);
+	podApp.randomPodcasts(filteredPodList);
+};
+
+// get three random podcasts from the list generated from the selected genre
+podApp.randomPodcasts = function(filteredPodList) {
+	for (var i = 0; i < 3; i++) {
+		const randomPodIndex = (Math.floor(Math.random() * filteredPodList.length));
+		podApp.topPodArray.push(filteredPodList[randomPodIndex]);
+		// console.log(podApp.topPodArray);
+		filteredPodList.splice(filteredPodList[randomPodIndex], 1);
+		// console.log(filteredPodList);
 	};
-
-// Request podcast data from iTunes API 
-// podApp.getPodcasts = function (podChoice){
-// 	$.ajax({
-// 		url: "https://itunes.apple.com/search",
-// 		method: "GET",
-// 		dataType: "jsonp",
-// 		data: {
-// 			format: "json",
-// 			term: podChoice, // get the value from podGenreChoice and set it here / have it correspond to genres // to fix for portfolio: i think that the term can just be "podcast" and then get the pods based on genreId ****
-// 			country: "US",  
-// 			media: "podcast",
-// 			entity: "podcast",
-// 			// attribute: "ratingIndex", // doesn't actually exist in the API, only in documentation
-// 			limit: 6
-// 		}
-// 	})
-// 	.then(function(res){
-// 		console.log(res);
-// 		var podData = res.results;
-// 		podApp.filterPodcasts(podData, podChoice);
-// 		podApp.displayPods(podData);
-// 	});
-// };
-
-
-
-
-// Randomize   *** NOT WORKING ***
-// podApp.randomPodcasts = function(podCast) {
-// var randomPods = podCast(Math.floor(Math.random) * podCast.length);
-// return randomPodcast;
-// };
-
+	// console.log(podApp.topPodArray);
+	podApp.displayPods(podApp.topPodArray);
+};
 
 // Make request to Google for locations of parks
 podApp.getParks = function(){
-	console.log(podApp.latLong[0], podApp.latLong[1]);
 	$.ajax({
 		url: 'http://proxy.hackeryou.com',
 		method: "GET",
@@ -166,19 +146,15 @@ podApp.getParks = function(){
 			}
 		}
 	}).then(function(parks){
-		console.log(parks.results);
-
 		parks.results.forEach(function(park){
 			var marker = L.marker([park.geometry.location.lat, park.geometry.location.lng], {icon: podApp.leafIcon}, {title: park.name}).bindPopup(park.name);
 				// lat: park.geometry.location.lat,
 				// lng: park.geometry.location.lng
 				podApp.parksArray.push(marker);
 				marker.addTo(podApp.myMap);
-			// console.log(park.geometry.location.lat);
 		})
 		var boundGroup = L.featureGroup(podApp.parksArray);
 		podApp.myMap.fitBounds(boundGroup.getBounds());
-		console.log(podApp.parksArray);
 	});
 };
 
@@ -192,16 +168,17 @@ podApp.leafIcon = L.icon({
 
 
 // Display podcasts
-// podApp.displayPods = function(pod) {
-// 	pod.forEach(function(podItem){
-// 			var titleEL = $("<h3>").text(podItem.collectionName);
-// 			var imageEl = $("<img>").attr("src", podItem.artworkUrl100);
+podApp.displayPods = function(topPodArray) {
+	podApp.topPodArray.forEach(function(podItem){
+		// console.log(podItem);
+			var titleEL = $("<h3>").text(podItem.Name);
+			var imageEl = $("<img>").attr("src", podItem.Photo_URL);
 		
-// 			// this will create a container to contain the title & image
-// 			var podSuggestionContainer = $("<div>").addClass("podGallery").append(titleEL, imageEl);
-// 			$("#podSuggest").append(podSuggestionContainer);
-// 	});
-// }
+			// this will create a container to contain the title & image
+			var podSuggestionContainer = $("<div>").addClass("podGallery").append(titleEL, imageEl);
+			$("#podSuggest").append(podSuggestionContainer);
+	});
+}
 
 
 

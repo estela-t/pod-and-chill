@@ -6,9 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
 	  integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
-	  crossorigin=""/>
-	  <link href="https://fonts.googleapis.com/css?family=Rubik|Work+Sans" rel="stylesheet">
-	  	<link rel="stylesheet" href="styles/styles.css">
+	crossorigin=""/>
+	<script src="https://use.fontawesome.com/14eb37d082.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Rubik|Work+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="styles/styles.css">
 
 	
 </head>
@@ -16,15 +17,16 @@
 
 <body>
 	<header>
-		<div>
-			<h1>POD & CHILL</h1>
+		<div class="title">
+			<h1><span>POD</span> <span>&</span> <span>CHILL</span></h1>
 		</div>
 		<p>(an app for unemployed web developers June-Sept)</p>
 	</header>
 	
 	<section class="genreSelection">
 		<div class="wrapper">
-			<h2>Current podcast mood:</h2>
+			<h2>Current podcast mood</h2>
+			<p id="choose">(choose one)</p>
 			<ul>
 				<li class="genreSelection_item">
 					<div class="iconContainer">
@@ -34,58 +36,59 @@
 				</li>
 				<li class="genreSelection_item">
 					<div class="iconContainer">
-						<img src="assets/news.svg" alt="icon of the globe">
+						<img src="assets/news.svg" class="largeSvg" alt="icon of the globe">
 					</div>
 					<p data-id="1311">News and Politics</p>
 				</li>
 				<li class="genreSelection_item">
 					<div class="iconContainer">
-						<img src="assets/science.svg" alt="icon of an aton">
+						<img src="assets/science.svg" class="largeSvg" alt="icon of an aton">
 					</div>
 					<p data-id="1315">Science and Medicine</p>
 				</li>
-				<!-- <li class="genreSelection_item">
-					<div class="iconContainer">
-						<img src="assets/music.svg" alt="icon of musical note">
-					</div>
-					<p data-id="1310">Music</p>
-				</li> -->
-				<li class="genreSelection_item">
-					<div class="iconContainer">
-						<img src="assets/tech.svg" alt="icon of an embed">
-					</div>
-					<p data-id="1318">Technology</p>
-				</li>
-				<!-- <li class="genreSelection_item">
-					<div class="iconContainer">
-						<img src="assets/tv.svg" alt="icon of a tv">
-					</div>
-					<p data-id="1309">TV & Film</p>
-				</li> -->
-				<li class="genreSelection_item">
-					<div class="iconContainer">
-						<img src="assets/comedy.svg" alt="icon of a laughing face">
-					</div>
-					<p data-id="1303">Comedy</p>
-				</li>
-				<li class="genreSelection_item">
-					<div class="iconContainer">
-						<img src="" alt="">
-					</div>
-					<p data-id="1316">True Crime</p>
-				</li>
-				<!-- <li class="genreSelection_item">
-					<div class="iconContainer">
-						<img src="assets/die.svg" alt="icon of game die">
-					</div>
-					<p data-id="1323">Games & Hobbies</p>
-				</li> -->
 				<li class="genreSelection_item">
 					<div class="iconContainer">
 						<img src="assets/art.svg" alt="">
 					</div>
 					<p data-id="">Arts</p>
 				</li>
+				<li class="genreSelection_item">
+					<div class="iconContainer">
+						<img src="assets/music.svg" class="largeSvg" alt="icon of musical note">
+					</div>
+					<p data-id="1310">Music</p>
+				</li>
+				<li class="genreSelection_item">
+					<div class="iconContainer">
+						<img src="assets/tech.svg" class="largeSvg" alt="icon of an embed">
+					</div>
+					<p data-id="1318">Technology</p>
+				</li>
+				<li class="genreSelection_item">
+					<div class="iconContainer">
+						<img src="assets/pencil-ruler.svg" class="largeSvg" class="largeSvg" alt="icon of a drafting pencil and ruler">
+					</div>
+					<p data-id="1309">Design</p>
+				</li>
+				<li class="genreSelection_item">
+					<div class="iconContainer">
+						<img src="assets/comedy.svg" class="largeSvg" alt="icon of a laughing face">
+					</div>
+					<p data-id="1303">Comedy</p>
+				</li>
+				<li class="genreSelection_item">
+					<div class="iconContainer">
+						<img src="assets/magnifying-glass.svg" alt="icon of a magnifying glass">
+					</div>
+					<p data-id="1316">True Crime</p>
+				</li>
+				<li class="genreSelection_item">
+					<div class="iconContainer">
+						<img src="assets/hourglass.svg" alt="icon of an hour glass">
+					</div>
+					<p data-id="1323">History</p>
+				</li>
+
 			</ul>
 		</div>
 	</section>
@@ -104,7 +107,11 @@
 	</section>
 
 	<footer>
-		<p>designed & built by Estela T. (& Helpcue💞)</p>
+		<p>design & code by Estela T.</p>
+		<div class="socialContainer">
+			<a href="https://twitter.com/estelatee" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+			<a href="https://www.instagram.com/estelatee/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+		</div>
 	</footer>
 
 
