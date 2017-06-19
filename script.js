@@ -13,7 +13,6 @@ podApp.events = function () {
 		$(this).removeClass("genreSelection_item");
 		$(this).toggleClass("selectedGenre");
 		var podGenreChoice = $(this).find("p").text();
-		// console.log(podGenreChoice);
 		podApp.getPodcasts(podGenreChoice);
 	});
 }
@@ -53,7 +52,7 @@ podApp.getLocation = function() {
 			// Bring in Google places results for nearby parks
 			podApp.getParks();
 			// add podlist to DOM
-			podApp.displayPods();
+				// podApp.displayPods();
 		}
 		function error(err){
 			if (err.code == 0) {
@@ -102,7 +101,10 @@ podApp.getPodcasts = (podChoice) => {
 			//We want to filter based on what the user selected and only show that genre
 			podData = podData.map(function(singlePod){
 				singlePod.Genre = singlePod.Genre.split(',');
-				console.log(singlePod.Genre);
+				// this will remove the spaces between genres 
+				singlePod.Genre = singlePod.Genre.map(function(podcast){
+					return podcast.trim();
+				});
 				return singlePod;
 			});
 			podApp.filterPodcasts(podData, podChoice)
@@ -113,20 +115,18 @@ podApp.filterPodcasts = function(podList, podChoice) {
 	const filteredPodList = podList.filter(function(singlePod){
 		return singlePod.Genre.includes(podChoice);
 	}); 
-	// console.log("hey :", filteredPodList);
 	podApp.randomPodcasts(filteredPodList);
 };
 
+
 // get three random podcasts from the list generated from the selected genre
 podApp.randomPodcasts = function(filteredPodList) {
+	const randomPodList = _.shuffle(filteredPodList);
 	for (var i = 0; i < 3; i++) {
-		const randomPodIndex = (Math.floor(Math.random() * filteredPodList.length));
-		podApp.topPodArray.push(filteredPodList[randomPodIndex]);
-		// console.log(podApp.topPodArray);
-		filteredPodList.splice(filteredPodList[randomPodIndex], 1);
-		// console.log(filteredPodList);
+		const randomPod = randomPodList.pop();
+		console.log(randomPodList);
+		podApp.topPodArray.push(randomPod);
 	};
-	// console.log(podApp.topPodArray);
 	podApp.displayPods(podApp.topPodArray);
 };
 
@@ -170,17 +170,17 @@ podApp.leafIcon = L.icon({
 // Display podcasts
 podApp.displayPods = function(topPodArray) {
 	podApp.topPodArray.forEach(function(podItem){
-		// console.log(podItem);
+		console.log(podItem);
 			var titleEL = $("<h3>").text(podItem.Name);
 			var imageEl = $("<img>").attr("src", podItem.Photo_URL);
+			var descriptEl = $("<p>").text(podItem.Description);
+			var infoEl = $("<a>").attr("href", podItem.URL).text("More info");
 		
 			// this will create a container to contain the title & image
-			var podSuggestionContainer = $("<div>").addClass("podGallery").append(titleEL, imageEl);
+			var podSuggestionContainer = $("<div>").addClass("podGallery clearfix").append(titleEL, imageEl, descriptEl, infoEl);
 			$("#podSuggest").append(podSuggestionContainer);
 	});
 }
-
-
 
 
 // function to initialize app
@@ -190,7 +190,6 @@ podApp.init = function(){
 	$(".locator").on("click", function(){
 		podApp.getLocation();
 	});
-
 }
 
 // doc ready

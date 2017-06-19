@@ -56,6 +56,7 @@ header {
 		font-size: 30px;
 		color: #9dd7e5;
 		margin-left: 15px;
+		margin-bottom: 10px;
 	}
 	#choose {
 		margin-left: 15px;
@@ -190,6 +191,7 @@ footer {
 
 // RETURNED PODS
 .results {
+	margin-top: 50px;
 	#podSuggest {
 		display: flex;
 		flex-wrap: wrap;
@@ -199,8 +201,30 @@ footer {
 		.podGallery {
 			width: calc(33.3% - 20px);
 			margin: 10px;
+			// flex: 1;
 			font-family: 'Work Sans', sans-serif;
-			font-size: 14px;
+			img {
+				max-width: 100%;
+			}
+			h3 {
+				font-size: 18px;
+			}
+			p {
+				font-size: 13px;
+				margin-top: 10px;
+			}
+			a {
+				text-decoration: none;
+				color: #ffa89e;
+				font-size: 13px;
+				padding: 5px 10px;
+				border: 3px solid #ffa89e;
+				transition: all 0.3s ease;
+				&:hover {
+					background: #ffa89e;
+					color: white;
+				}
+			}
 		}
 	}
 }
@@ -235,7 +259,38 @@ footer {
 			width: calc(50% - 30px); 
 		}
 	}
-}
+	.results {
+			#podSuggest {
+				max-width: 85%;
+				.podGallery {
+					width: calc(50% - 20px);
+					margin: 10px;
+					font-family: 'Work Sans', sans-serif;
+					&:last-of-type {
+						width: calc(100% - 20px);
+						// display: flex;
+						// flex-wrap: wrap;
+						img {
+							width: 50%;
+							float: left;
+						}
+						p, a {
+							float: left;
+						}
+						p{
+							width: 50%;
+							padding-left: 10px;
+							margin-top: 10px;
+						}
+						a {
+							padding-left: 10px;
+						}
+					}
+				}
+			}
+		}
+	}
+
 
 @media (max-width: 640px) {
 	header { 
@@ -263,6 +318,29 @@ footer {
 			text-align: center;
 		}
 	}
+	.results {
+		#podSuggest {
+			.podGallery {
+				width: calc(100% - 20px);
+				// margin: 10px;
+				// font-family: 'Work Sans', sans-serif;
+				img {
+					width: 50%;
+					float: left;
+				}
+				p, a {
+					float: left;
+				}
+				p{
+					width: 50%;
+					padding-left: 10px;
+				}
+				a {
+					padding-left: 10px;
+				}
+			}
+		}
+		}
 }
 
 @media (max-width: 480px) {
