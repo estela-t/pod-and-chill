@@ -188,6 +188,11 @@ header {
     font-size: 24px;
     margin-top: 60px; }
 
+.genreSelection .subtitle {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 40px; }
+
 .genreSelection h2 {
   font-family: 'Rubik', sans-serif;
   font-size: 30px;
@@ -340,21 +345,22 @@ footer {
         max-width: 100%; }
       .results #podSuggest .podGallery h3 {
         font-size: 18px; }
-      .results #podSuggest .podGallery p {
-        font-size: 13px;
+      .results #podSuggest .podGallery .textContainer {
         margin-top: 10px; }
-      .results #podSuggest .podGallery a {
-        text-decoration: none;
-        color: #ffa89e;
-        font-size: 13px;
-        padding: 5px 10px;
-        border: 3px solid #ffa89e;
-        -webkit-transition: all 0.3s ease;
-        -o-transition: all 0.3s ease;
-        transition: all 0.3s ease; }
-        .results #podSuggest .podGallery a:hover {
-          background: #ffa89e;
-          color: white; }
+        .results #podSuggest .podGallery .textContainer p {
+          font-size: 13px; }
+        .results #podSuggest .podGallery .textContainer a {
+          text-decoration: none;
+          color: #ffa89e;
+          font-size: 13px;
+          padding: 5px 10px;
+          border: 3px solid #ffa89e;
+          -webkit-transition: all 0.3s ease;
+          -o-transition: all 0.3s ease;
+          transition: all 0.3s ease; }
+          .results #podSuggest .podGallery .textContainer a:hover {
+            background: #ffa89e;
+            color: white; }
 
 @media (max-width: 940px) {
   .genreSelection li {
@@ -378,14 +384,11 @@ footer {
         .results #podSuggest .podGallery:last-of-type img {
           width: 50%;
           float: left; }
-        .results #podSuggest .podGallery:last-of-type p, .results #podSuggest .podGallery:last-of-type a {
-          float: left; }
-        .results #podSuggest .podGallery:last-of-type p {
-          width: 50%;
+        .results #podSuggest .podGallery:last-of-type .textContainer {
+          float: left;
           padding-left: 10px;
-          margin-top: 10px; }
-        .results #podSuggest .podGallery:last-of-type a {
-          padding-left: 10px; } }
+          margin-top: 10px;
+          width: 50%; } }
 
 @media (max-width: 640px) {
   header h1 {
@@ -416,18 +419,25 @@ footer {
     padding: 0 25px;
     font-size: 18px;
     text-align: center; }
-  .results #podSuggest .podGallery {
-    width: calc(100% - 20px); }
-    .results #podSuggest .podGallery img {
-      width: 50%;
-      float: left; }
-    .results #podSuggest .podGallery p, .results #podSuggest .podGallery a {
-      float: left; }
-    .results #podSuggest .podGallery p {
-      width: 50%;
-      padding-left: 10px; }
-    .results #podSuggest .podGallery a {
-      padding-left: 10px; } }
+  .results #podSuggest {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+    .results #podSuggest .podGallery {
+      width: calc(100% - 20px);
+      width: calc(100% - 20px); }
+      .results #podSuggest .podGallery img {
+        width: 50%;
+        float: left; }
+      .results #podSuggest .podGallery .textContainer {
+        float: left;
+        padding-left: 10px;
+        margin-top: 0;
+        width: 50%; }
+        .results #podSuggest .podGallery .textContainer p {
+          margin-top: 0; } }
 
 @media (max-width: 480px) {
   header div h1:after {

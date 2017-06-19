@@ -39,7 +39,6 @@ podApp.getLocation = function() {
 			var longitude = pos.coords.longitude;
 			// Need array to pass to leaflet
 			podApp.latLong = [latitude, longitude];
-			// console.log(pos);
 			// hide spinning wheel and show map
 			$('.loadIcon').hide();
 			// $('#mapid').removeClass("mapHide");
@@ -51,8 +50,7 @@ podApp.getLocation = function() {
 			podApp.marker = L.marker(podApp.latLong).addTo(podApp.myMap);
 			// Bring in Google places results for nearby parks
 			podApp.getParks();
-			// add podlist to DOM
-				// podApp.displayPods();
+
 		}
 		function error(err){
 			if (err.code == 0) {
@@ -72,7 +70,6 @@ podApp.getLocation = function() {
 			    alert('Timed out');
 			}
 		}
-
 	};
 
 // Create Leaflet map
@@ -87,8 +84,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
     maxZoom: 18
 }).addTo(podApp.myMap);
-
-
 
 // Request podcast data from Sheetsu API
 podApp.getPodcasts = (podChoice) => {
@@ -110,6 +105,7 @@ podApp.getPodcasts = (podChoice) => {
 			podApp.filterPodcasts(podData, podChoice)
 		});
 	}
+
 // Filter returned podcast data so that only podcasts that include the chosen genre appear
 podApp.filterPodcasts = function(podList, podChoice) {
 	const filteredPodList = podList.filter(function(singlePod){
@@ -124,7 +120,6 @@ podApp.randomPodcasts = function(filteredPodList) {
 	const randomPodList = _.shuffle(filteredPodList);
 	for (var i = 0; i < 3; i++) {
 		const randomPod = randomPodList.pop();
-		console.log(randomPodList);
 		podApp.topPodArray.push(randomPod);
 	};
 	podApp.displayPods(podApp.topPodArray);
@@ -170,18 +165,16 @@ podApp.leafIcon = L.icon({
 // Display podcasts
 podApp.displayPods = function(topPodArray) {
 	podApp.topPodArray.forEach(function(podItem){
-		console.log(podItem);
 			var titleEL = $("<h3>").text(podItem.Name);
 			var imageEl = $("<img>").attr("src", podItem.Photo_URL);
 			var descriptEl = $("<p>").text(podItem.Description);
 			var infoEl = $("<a>").attr("href", podItem.URL).text("More info");
-		
+			var textContainer = $('<div>').addClass('textContainer').append(descriptEl, infoEl)	
 			// this will create a container to contain the title & image
-			var podSuggestionContainer = $("<div>").addClass("podGallery clearfix").append(titleEL, imageEl, descriptEl, infoEl);
+			var podSuggestionContainer = $("<div>").addClass("podGallery clearfix").append(titleEL, imageEl, textContainer);
 			$("#podSuggest").append(podSuggestionContainer);
 	});
 }
-
 
 // function to initialize app
 podApp.init = function(){

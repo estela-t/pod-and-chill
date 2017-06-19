@@ -51,6 +51,11 @@ header {
 
 // PODS
 .genreSelection {
+	.subtitle {
+		font-size: 20px;
+		text-align: center;
+		margin-bottom: 40px;
+	}
 	h2 {
 		font-family: 'Rubik', sans-serif;
 		font-size: 30px;
@@ -201,7 +206,6 @@ footer {
 		.podGallery {
 			width: calc(33.3% - 20px);
 			margin: 10px;
-			// flex: 1;
 			font-family: 'Work Sans', sans-serif;
 			img {
 				max-width: 100%;
@@ -209,20 +213,22 @@ footer {
 			h3 {
 				font-size: 18px;
 			}
-			p {
-				font-size: 13px;
+			.textContainer {
 				margin-top: 10px;
-			}
-			a {
-				text-decoration: none;
-				color: #ffa89e;
-				font-size: 13px;
-				padding: 5px 10px;
-				border: 3px solid #ffa89e;
-				transition: all 0.3s ease;
-				&:hover {
-					background: #ffa89e;
-					color: white;
+				p {
+					font-size: 13px;
+				}
+				a {
+					text-decoration: none;
+					color: #ffa89e;
+					font-size: 13px;
+					padding: 5px 10px;
+					border: 3px solid #ffa89e;
+					transition: all 0.3s ease;
+					&:hover {
+						background: #ffa89e;
+						color: white;
+					}
 				}
 			}
 		}
@@ -247,7 +253,6 @@ footer {
 		div {
 			h1 {
 				font-size: 72px;
-				// margin: 100px 30px;
 			}
 		}
 		p {
@@ -260,34 +265,27 @@ footer {
 		}
 	}
 	.results {
-			#podSuggest {
-				max-width: 85%;
-				.podGallery {
-					width: calc(50% - 20px);
-					margin: 10px;
-					font-family: 'Work Sans', sans-serif;
-					&:last-of-type {
-						width: calc(100% - 20px);
-						// display: flex;
-						// flex-wrap: wrap;
-						img {
-							width: 50%;
+		#podSuggest {
+			max-width: 85%;
+			.podGallery {
+				width: calc(50% - 20px);
+				margin: 10px;
+				font-family: 'Work Sans', sans-serif;
+				&:last-of-type {
+					width: calc(100% - 20px);
+					img {
+						width: 50%;
+						float: left;
+					}
+					.textContainer {
 							float: left;
-						}
-						p, a {
-							float: left;
-						}
-						p{
-							width: 50%;
 							padding-left: 10px;
 							margin-top: 10px;
-						}
-						a {
-							padding-left: 10px;
-						}
+							width: 50%;
 					}
 				}
 			}
+		}
 		}
 	}
 
@@ -320,27 +318,26 @@ footer {
 	}
 	.results {
 		#podSuggest {
+			flex-direction: column;
 			.podGallery {
 				width: calc(100% - 20px);
-				// margin: 10px;
-				// font-family: 'Work Sans', sans-serif;
+				width: calc(100% - 20px);
 				img {
 					width: 50%;
 					float: left;
 				}
-				p, a {
+				.textContainer {
 					float: left;
-				}
-				p{
+					padding-left: 10px;
+					margin-top: 0;
 					width: 50%;
-					padding-left: 10px;
-				}
-				a {
-					padding-left: 10px;
+					p {
+						margin-top: 0;
+					}
 				}
 			}
 		}
-		}
+	}
 }
 
 @media (max-width: 480px) {
@@ -353,34 +350,34 @@ footer {
 			}
 		}
 	}
-	.genreSelection {
-		.wrapper {
-			max-width: 90%;
-		li {
-			width: calc(100% - 30px); 
-			display: flex;
-			flex-direction: row;
-			justify-content: space-around;
-			align-items: center;
-			padding: 5px;
-			margin: 10px 15px;
-			.iconContainer {
-				width: 40%;
-				margin: 0;
-				height: 80%;
-				img {
-					max-width: 100%;
-					height: 100%;
+		.genreSelection {
+			.wrapper {
+				max-width: 90%;
+			li {
+				width: calc(100% - 30px); 
+				display: flex;
+				flex-direction: row;
+				justify-content: space-around;
+				align-items: center;
+				padding: 5px;
+				margin: 10px 15px;
+				.iconContainer {
+					width: 40%;
+					margin: 0;
+					height: 80%;
+					img {
+						max-width: 100%;
+						height: 100%;
+					}
+				.largeSvg {
+					max-width: 70%;
 				}
-			.largeSvg {
-				max-width: 70%;
-			}
-			}
-			p {
-				width: 50%;
-				font-size: 22px;
+				}
+				p {
+					width: 50%;
+					font-size: 22px;
+				}
 			}
 		}
 	}
-}
 }
