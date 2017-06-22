@@ -128,7 +128,7 @@ podApp.randomPodcasts = function(filteredPodList) {
 // Make request to Google for locations of parks
 podApp.getParks = function(){
 	$.ajax({
-		url: 'http://proxy.hackeryou.com',
+		url: 'https://proxy.hackeryou.com',
 		method: "GET",
 		dataType: "json",
 		data: {
