@@ -14,6 +14,7 @@ podApp.events = function () {
 		$(this).toggleClass("selectedGenre");
 		$("li").not(this).css("display", "none");
 		var podGenreChoice = $(this).find("p").text();
+		$('<p>').text(`A few podcasts about ${podGenreChoice} to check out:`).append(".results");
 		podApp.getPodcasts(podGenreChoice);
 		podApp.displayPods(podGenreChoice);
 	});
@@ -166,7 +167,6 @@ podApp.leafIcon = L.icon({
 
 // Display podcasts
 podApp.displayPods = function(topPodArray) {
-	$('<p>').text(`A few podcasts about ${podGenreChoice} to check out:`).append(".results");
 	podApp.topPodArray.forEach(function(podItem){
 			var titleEL = $("<h3>").text(podItem.Name);
 			var imageEl = $("<img>").attr("src", podItem.Photo_URL);
